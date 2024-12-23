@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the output directory for the builds
-OUTPUT_DIR="build"
+OUTPUT_DIR="bin"
 
 # Create the output directory if it doesn't exist
 mkdir -p $OUTPUT_DIR
