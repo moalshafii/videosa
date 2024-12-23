@@ -108,9 +108,10 @@ func main() {
 		SubFontColor:   "&HFFFFFF",
 		SubBGColor:     "&H000",
 		SubFontSize:    20,
-		SubBorderWidth: 3,
+		SubBorderWidth: 2,
 		SubAlignment:   2,
 	}
+
 	video, err := VideoOpts.Generator()
 	if err != nil {
 		Error(err, "generating video")
