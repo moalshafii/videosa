@@ -19,9 +19,8 @@ func (opts *Options) Generator() (string, error) {
 	subtitleFilter := opts.SubtitleFilter()
 	overlayFilter := opts.OverlayFilter()
 
-	// Construct the FFmpeg command with looping the video and applying the duration
 	cmd := fmt.Sprintf(
-		"ffmpeg -stream_loop -1 -i %s -i %s -i %s -filter_complex \"%s,%s\" -t %f -c:v libx264 -c:a aac -shortest %s",
+		"ffmpeg -stream_loop -1 -i %s -i %s -i %s -filter_complex \"%s,%s[video_out];[0:a][1:a]amix=inputs=2[audio_out]\" -map \"[video_out]\" -map \"[audio_out]\" -t %f -c:v libx264 -c:a aac %s",
 		opts.VideoFile,
 		opts.AudioFile,
 		opts.Overlay.File,
